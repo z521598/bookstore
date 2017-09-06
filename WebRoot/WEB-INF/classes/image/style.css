@@ -1,0 +1,216 @@
+/* -- default style -- */
+body {
+	padding:0;
+	margin:0;
+	color:#666765;
+	background:#fff url(images/bg.jpg) repeat-x 0 0;
+	font:11px/18px Arial, Helvetica, sans-serif;
+}
+div, table, th, tr, td, h1, h2, h3, h4, h5, h6, p, img, ul, ol, form, fieldset, input, textarea, select {
+	padding:0;
+	margin:0;
+}
+img { border:none; display:block; }
+ul  { list-style:none; }
+.spacer {
+	clear:both; font-size:0; line-height:0;
+}
+
+/* -- anchor style -- */
+a {
+	outline:none;
+	text-decoration:none;
+	color:#353635;
+	background-color:inherit;
+}
+a:hover {
+	color:#b60000;
+	background-color:inherit;
+}
+a.more {
+	color:#fff;
+	background-color:inherit;
+	background:url(images/more-btn-bg.gif) no-repeat 0 0;
+	width:84px;
+	height:21px;
+	display:block;
+	line-height:21px;
+	font-weight:bold;
+	text-align:center;
+}
+a.more:hover {
+	color:#fbff8a;
+	background-color:inherit;
+}
+
+/* -- wrapper style -- */
+#wrapper { margin:auto;}
+
+/* -- top links style -- */
+ul.topTextLink {
+	font-size:12px;
+	color:#878787;
+	background-color:inherit;
+	padding-bottom:7px;
+}
+ul.topTextLink li { display:inline;}
+ul.topTextLink li a {
+	color:#878787;
+	background-color:inherit;
+	margin:0 7px 0 4px;
+}
+ul.topTextLink li a:hover,
+ul.topTextLink li a.active {
+	color:#fd8505;
+	background-color:inherit;
+}
+ul.topTextLink li a.active { cursor:text;}
+
+/* -- jeader style -- */
+td.header {
+	height:245px;
+	background:url(images/header-bg.jpg) no-repeat 0 0;
+}
+td.header a {
+	width:142px;
+	height:33px;
+	display:block;
+	float:right;
+	color:#fff;
+	background-color:inherit;
+	background:url(images/top-menu-bg.jpg) no-repeat 0 0;
+	margin-right:2px;
+	font:18px/33px Georgia, "Times New Roman", Times, serif;
+	text-align:center;
+}
+td.header a:hover {
+	color:#fbff8a;
+	background-color:inherit;
+}
+
+/* -- left panel style -- */
+td.leftPanel {
+	color:inherit;
+	background-color:#f1edd2;
+}
+
+/* -- login section style -- */
+td.login {
+	color:#5b5b5b;
+	background:#fffdef url(images/login-bg.jpg) repeat-x 0 0;
+	font-weight:bold;
+	padding:50px 30px 18px 20px;
+}
+td.login h2 {
+	font:normal 18px/20px Georgia, "Times New Roman", Times, serif;
+	color:#537644;
+	background-color:inherit;
+	background:url(images/login-ico.jpg) no-repeat 0 0;
+	padding:12px 0 15px 52px
+}
+td.login input {
+	width:154px;
+	height:18px;
+	padding:4px;
+	border:1px solid #e3da8c;
+}
+td.login input.btn {
+	width:auto;
+	height:auto;
+	padding:0;
+	border:none;
+}
+
+/* -- ctagory ssection style -- */
+td.darkHeading {
+	color:#fff;
+	background-color:#353635;
+	padding:0 20px;
+}
+td.darkHeading h2 {
+	font:normal 18px/20px Georgia, "Times New Roman", Times, serif;
+}
+.catagoryList {
+	padding:8px 20px;
+}
+.catagoryList a {
+	padding:0 0 0 22px;
+	display:block;
+	background:url(images/box-right-bullet.jpg) no-repeat 0 8px;
+	font-size:13px;
+	line-height:24px;
+}
+
+/* -- welcome section style -- */
+td.welcome {
+	background:url(images/welcome-bg.jpg) no-repeat 0 100%;
+	padding:16px 186px 28px 14px; 
+}
+td.welcome h2 {
+	font:normal 24px/26px Georgia, "Times New Roman", Times, serif;
+	color:#7fb956;
+	background-color:inherit;
+}
+td.welcome h2 strong {
+	color:#f58e03;
+	background-color:inherit;
+	text-transform:uppercase;
+}
+td.welcome h2,
+td.welcome p {
+	padding-bottom:16px;
+}
+
+/* -- testimonials style -- */
+td.testimonials {
+	color:#6b6854;
+	background-color:inherit;
+	background:url(images/testimonial-ico.jpg) no-repeat 25px 20px;
+	padding:20px 58px 20px 96px;
+	font:normal 16px/18px Georgia, "Times New Roman", Times, serif;
+}
+td.testimonials h2 {
+	font:normal 18px/20px Georgia, "Times New Roman", Times, serif;
+	color:#7fb956;
+	background-color:inherit;
+	padding-bottom:10px;
+}
+td.testimonials h2 span {
+	color:#f58e03;
+	background-color:inherit;
+}
+td.testimonials p.text {
+	padding-left:30px;
+	background:url(images/start-quote.gif) no-repeat 0 0;
+}
+td.testimonials p.text span.end {
+	background:url(images/end-quote.gif) no-repeat 100% 100%;
+	width:20px;
+}
+td.testimonials p.author {
+	text-align:right;
+	background:url(images/author-dot.gif) no-repeat 150px 10px;
+}
+td.testimonials p.author a {
+	color:#68af36;
+	background-color:inherit;
+	font:bold 12px/14px Arial, Helvetica, sans-serif;
+}
+td.testimonials p.author a:hover {
+	color:#b60000;
+	background-color:inherit;
+}
+
+/* -- footer style -- */
+td.footer {
+	color:#efefef;
+	background:#606060 url(images/footer-bg.jpg) repeat-x 0 0;
+	padding:14px 22px;
+}
+td.footer p.links,
+td.footer a {
+	color:#f1edd2;
+	white-space:pre;
+	font-size:11px;
+}
+

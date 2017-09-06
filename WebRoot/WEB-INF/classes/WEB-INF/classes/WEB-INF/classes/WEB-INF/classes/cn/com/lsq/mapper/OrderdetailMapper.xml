@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.lsq.mapper.OrderdetailMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.lsq.po.Orderdetail" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="goods_number" property="goodsNumber" jdbcType="INTEGER" />
+    <result column="totalPrice" property="totalprice" jdbcType="DOUBLE" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, goods_id, goods_number, totalPrice, user_id, state
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    orderdetail.*,goods.name
+    from orderdetail,goods
+    where orderdetail.id = #{id,jdbcType=INTEGER} 
+      and orderdetail.goods_id = goods.id
+  </select>
+  
+  <select id="selectByUserIdAndGoodsId" resultMap="BaseResultMap" parameterType="java.lang.Integer"  >
+  	SELECT * FROM orderdetail WHERE user_id = #{userId} AND goods_id = #{goodsId} AND state = 0
+  </select>
+  <select id ="selectByUserIdAndGoodsIdForTest" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  SELECT * FROM orderdetail WHERE user_id = #{userId} AND goods_id = #{goodsId} AND state != 0 or 4
+  </select>
+  
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    orderdetail.*,goods.name
+    from orderdetail,goods
+    where user_id = #{id,jdbcType=INTEGER} and state = "0" 
+      and orderdetail.goods_id = goods.id
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orderdetail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <delete id="clean">
+  	DELETE FROM orderdetail	WHERE order_id IS null
+  </delete>
+  
+  <insert id="insert" parameterType="cn.com.lsq.po.Orderdetail" >
+    insert into orderdetail (id, order_id, goods_id, 
+      goods_number, totalPrice, user_id, 
+      state)
+    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
+      #{goodsNumber,jdbcType=INTEGER}, #{totalprice,jdbcType=DOUBLE}, #{userId,jdbcType=INTEGER}, 
+      #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.lsq.po.Orderdetail" >
+    insert into orderdetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="goodsNumber != null" >
+        goods_number,
+      </if>
+      <if test="totalprice != null" >
+        totalPrice,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNumber != null" >
+        #{goodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="totalprice != null" >
+        #{totalprice,jdbcType=DOUBLE},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.lsq.po.Orderdetail" >
+    update orderdetail
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNumber != null" >
+        goods_number = #{goodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="totalprice != null" >
+        totalPrice = #{totalprice,jdbcType=DOUBLE},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.lsq.po.Orderdetail" >
+    update orderdetail
+    set order_id = #{orderId,jdbcType=INTEGER},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      goods_number = #{goodsNumber,jdbcType=INTEGER},
+      totalPrice = #{totalprice,jdbcType=DOUBLE},
+      user_id = #{userId,jdbcType=INTEGER},
+      state = #{state,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByUserIdAndGoodsId" parameterType="java.lang.Integer" >
+  	update orderdetail set state = 1 
+  	where goods_id = #{2} and user_id = #{1}
+  </update>
+</mapper>

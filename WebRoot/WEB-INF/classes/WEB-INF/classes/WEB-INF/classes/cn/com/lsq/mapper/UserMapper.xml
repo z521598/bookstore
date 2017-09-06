@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.lsq.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.lsq.po.User" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="idCard" property="idcard" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="homePhone" property="homephone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="phoneNumber" property="phonenumber" jdbcType="VARCHAR" />
+    <result column="firstAddress" property="firstaddress" jdbcType="VARCHAR" />
+    <result column="secondAddress" property="secondaddress" jdbcType="VARCHAR" />
+    <result column="thirdAddress" property="thirdaddress" jdbcType="VARCHAR" />
+    <result column="isVIP" property="isvip" jdbcType="BIT" />
+    <result column="registrationTime" property="registrationtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+   <sql id="Base_Column_List" >
+    id, password, name, 
+      idCard, sex, birthday, 
+      homePhone, email, phoneNumber, 
+      firstAddress, secondAddress, thirdAddress, 
+      isVIP, registrationTime
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+  </select>
+  
+  <select id="login" resultMap="BaseResultMap" parameterType="cn.com.lsq.po.User">
+  	select
+  	<include refid="Base_Column_List" />
+  	from user
+  	where id = #{id} and password= #{password}
+  </select>
+  <select id="selectOne" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  	select 
+    <include refid="Base_Column_List" />
+    from user where id = #{id,jdbcType=INTEGER}   
+  </select>
+  <insert id="insert" parameterType="cn.com.lsq.po.User" >
+    insert into user (id, password, name, 
+      idCard, sex, birthday, 
+      homePhone, email, phoneNumber, 
+      firstAddress, secondAddress, thirdAddress, 
+      isVIP, registrationTime)
+    values (#{id,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{idcard,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, 
+      #{homephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, 
+      #{firstaddress,jdbcType=VARCHAR}, #{secondaddress,jdbcType=VARCHAR}, #{thirdaddress,jdbcType=VARCHAR}, 
+      #{isvip,jdbcType=BIT}, #{registrationtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.lsq.po.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="idcard != null" >
+        idCard,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="homephone != null" >
+        homePhone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="phonenumber != null" >
+        phoneNumber,
+      </if>
+      <if test="firstaddress != null" >
+        firstAddress,
+      </if>
+      <if test="secondaddress != null" >
+        secondAddress,
+      </if>
+      <if test="thirdaddress != null" >
+        thirdAddress,
+      </if>
+      <if test="isvip != null" >
+        isVIP,
+      </if>
+      <if test="registrationtime != null" >
+        registrationTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="homephone != null" >
+        #{homephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="firstaddress != null" >
+        #{firstaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="secondaddress != null" >
+        #{secondaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdaddress != null" >
+        #{thirdaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isvip != null" >
+        #{isvip,jdbcType=BIT},
+      </if>
+      <if test="registrationtime != null" >
+        #{registrationtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.lsq.po.User" >
+    update user
+       <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        idCard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="homephone != null">
+        homePhone = #{homephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null">
+        phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="firstaddress != null">
+        firstAddress = #{firstaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="secondaddress != null">
+        secondAddress = #{secondaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdaddress != null">
+        thirdAddress = #{thirdaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isvip != null">
+        isVIP = #{isvip,jdbcType=BIT},
+      </if>
+      <if test="registrationtime != null">
+        registrationTime = #{registrationtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
