@@ -1,0 +1,7 @@
+.idea
+.settings
+.myeclipse
+.project
+.mymetadata
+.classpath
+WebRoot/WEB-INF/classes

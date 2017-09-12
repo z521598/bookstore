@@ -95,12 +95,10 @@ public class GoodsService {
 	}
 
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
 		goodsMapper.deleteByPrimaryKey(id);
 	}
 
 	public Goods queryOne(Integer id) {
-		// TODO Auto-generated method stub
 		if (commentMapper.selectByGoodsId(id).size() != 0) {
 			return goodsMapper.selectByPrimaryKey(id);
 		} else {
@@ -116,7 +114,7 @@ public class GoodsService {
 	public List<Goods> queryByType(HttpServletRequest request)
 			throws UnsupportedEncodingException {
 		String type = request.getParameter("type");
-		type = new String(type.getBytes("iso-8859-1"), "utf-8");
+//		type = new String(type.getBytes("iso-8859-1"), "utf-8");
 		return goodsMapper.queryByType(type);
 	}
 
